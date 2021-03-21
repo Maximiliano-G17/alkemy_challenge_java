@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <h1 class="title" th:text="${title}"></h1>
+    <form th:action="@{/api/teachers/postUpdate}" th:object="${teacher}"
+		method="post">
+		<input type="hidden" th:field="*{id}">
+        <div class="form1">
+            <div class="form-group1">
+                <label class="label" for="name">Name:</label>
+                <input class="input" type="text" id="name" th:field="*{name}" name="name" placeholder="Enter name">   
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>   
+            </div>
+            <div class="form-group2">
+                <label class="label" for="surname">Surname:</label>
+                <input class="input" type="text" id="surname" th:field="*{surname}" name="surname" placeholder="Enter Surname"> 
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></small>                     
+            </div>
+            <div class="form-group3">
+                <label class="label" for="dni">D.N.I:</label>
+                <input class="input" type="text" id="dni" th:field="*{dni}" name="dni" placeholder="Enter D.NI">   
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>   
+            </div>
+            <div class="form-group3">
+                <label class="label" for="active">Active:</label>
+                <input class="input" type="text" id="active" th:field="*{active}" name="active" placeholder="Enter Active"> 
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('active')}" th:errors="*{active}"></small>     
+            </div>            
+        </div>
+        <button type="submit" class="btn">Save</button>
+      </form>
+</body>
+</html>

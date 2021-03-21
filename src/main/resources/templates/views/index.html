@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show all</title>
+</head>
+<body>
+  <h1 class="main_title">WELCOME TO THE UNIVERSITY OF JAVA !!</h1>
+  <div class="container-shows">
+    <div>
+        <a class="show-teachers"
+        th:href="@{/api/teachers/}" th:target="_blank">Show Teachers</a>
+    </div>
+    <div>
+        <a class="show-subjects"
+        th:href="@{/api/subjects/}" th:target="_blank">Show Subjects</a>
+    </div>  
+  </div>
+<h4 class="main_h4">Remember that only admins can enter the teachers view</h4>
+</body>
+</html>

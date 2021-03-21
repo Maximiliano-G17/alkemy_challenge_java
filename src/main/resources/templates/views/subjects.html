@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="table-container">    
+        <table class="table">   
+            <caption class="table-caption">SUBJECTS</caption>  
+            <thead>
+              <tr class="table-row">
+                <th class="table-head">Name</th>               
+                <th class="table-head">Schedule</th>
+                <th class="table-head">Student capacity</th>
+                <th class="table-head">Student available</th>
+                <th class="table-head">Teacher</th>
+                <th class="table-head">Description</th>
+                <th class="table-head">Update</th>
+                <th class="table-head">Register</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row" th:each="subject:${findAll}">
+                <td class="table-data" th:text="${subject.name}"></td>
+                <td class="table-data" th:text="${subject.schedule}"></td>
+                <td class="table-data" th:text="${subject.maximum_amount_of_students}"></td>
+                <td class="table-data" th:text="${subject.availableCapacity}"></td>
+                <td class="table-data"><a class="link" th:href="@{/api/subjects/teacher/} + ${subject.id}">To Show</a></td>
+                <td class="table-data"><a class="link" th:target="_blank" th:href="@{/api/subjects/description/} + ${subject.id}">Description</a></td>
+                <td class="table-data"><a class="link" th:href="@{/api/subjects/update/} + ${subject.id}">Update</a></td>                
+                <td class="table-data"><a class="link" th:target="_blank" th:href="@{/api/subjects/register/} + ${subject.id}">Register</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>

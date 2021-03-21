@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <h1 class="title" th:text="${title}"></h1>
+    <form th:action="@{/api/subjects/postUpdate}" th:object="${subject}"
+		method="post">
+		<input type="hidden" th:field="*{id}">
+		<input type="hidden" th:field="*{availableCapacity}">
+        <div class="form1">
+            <div class="form-group1">
+                <label class="label" for="name">Name:</label>
+                <input class="input" type="text" id="name" th:field="*{name}" name="name" placeholder="Enter name">   
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>   
+            </div>
+            <div class="form-group2">
+                <label class="label" for="schedule">Schedule:</label>
+                <input class="input" type="text" id="schedule" th:field="*{schedule}" name="schedule" placeholder="Enter schedule"> 
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}"></small>                    
+            </div>
+            <div class="form-group3">
+                <label class="label" for="maximum_amount_of_students">Student capacity:</label>
+                <input class="input" type="text" id="maximum_amount_of_students" th:field="*{maximum_amount_of_students}" name="maximum_amount_of_students" placeholder="Enter Student capacity"> 
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('maximum_amount_of_students')}" th:errors="*{maximum_amount_of_students}"></small>    
+            </div>
+            <div class="form-group3">
+                <label class="label" for="teacher.id">Teacher:</label>
+                <input class="input" type="text" id="teacher.id" th:field="*{teacher.id}" name="teacher.id" placeholder="Enter Teacher">   
+            </div>            
+        </div>
+        <button type="submit" class="btn">Save</button>
+      </form>
+</body>
+</html>

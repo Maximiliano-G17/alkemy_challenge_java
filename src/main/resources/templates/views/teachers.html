@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers</title>
+</head>
+<body>
+    <div class="table-container">    
+        <table class="table">   
+            <caption class="table-caption">TEACHERS</caption>  
+            <thead>
+              <tr class="table-row">
+                <th class="table-head">#ID</th>
+                <th class="table-head">Name</th>
+                <th class="table-head">Surname</th>
+                <th class="table-head">D.N.I</th>
+                <th class="table-head">Active</th>
+                 <th class="table-head">Update</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row" th:each="t:${teacher}">
+                <th class="table-data" scope="row" th:text="${t.id}"></th>
+                <td class="table-data" th:text="${t.name}"></td>
+                <td class="table-data" th:text="${t.surname}"></td>
+                <td class="table-data" th:text="${t.dni}"></td>
+                <td class="table-data" th:text="${t.active}"></td>
+                <td class="table-data"><a class="link" th:target="_blank" th:href="@{/api/teachers/update/} + ${t.id}">Update</a></td>   
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
