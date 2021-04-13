@@ -6,4 +6,5 @@ import com.application.web.university.domain.Director;
 
 public interface DirectorRepository extends JpaRepository<Director, Long>{
 
+	Director findByDni(String dni);
 }

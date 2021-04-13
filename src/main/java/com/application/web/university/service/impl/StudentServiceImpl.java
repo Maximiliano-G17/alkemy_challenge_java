@@ -33,5 +33,4 @@ public class StudentServiceImpl implements StudentService{
 	public Optional<Student> findByLegajo(String legajo) {
 		return studentRepo.findByLegajo(legajo);
 	}
-
 }

@@ -11,5 +11,4 @@ public interface StudentService {
 	Student save(Student student);
 
 	Optional<Student> findByLegajo(String legajo);
-
 }
