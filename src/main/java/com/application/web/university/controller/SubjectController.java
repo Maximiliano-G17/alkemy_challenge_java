@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.application.web.university.domain.Subject;
 import com.application.web.university.domain.Teacher;
+import com.application.web.university.service.StudentService;
 import com.application.web.university.service.SubjectService;
+
+import javassist.NotFoundException;
 
 @Controller
 @RequestMapping("api/subjects")
@@ -25,6 +28,9 @@ public class SubjectController {
 	
 	@Autowired
 	private SubjectService subjectService;
+	
+	@Autowired
+	private StudentService studentService;
 
 	@GetMapping("/")
 	public String findAll(Model model) {
@@ -56,7 +62,10 @@ public class SubjectController {
 	}
 	
 	@PostMapping("/postRegister")
-	public String postRegister(@Valid Subject subject, BindingResult result,@RequestParam String studentFile, Model model) {
+	public String postRegister(@Valid Subject subject, BindingResult result,@RequestParam String studentFile, Model model) throws NotFoundException {
+		if(!studentService.findByLegajo(studentFile).isPresent()) {
+			throw new NotFoundException("The student with file " + studentFile + " does not exist");
+		}
 		if (result.hasErrors() || studentFile.isEmpty()) {
 			model.addAttribute("subject", subject);
 			return "views/register";
